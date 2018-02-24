@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +675,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DistributedCalculator" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -683,12 +685,12 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="DistributedCalculator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-			<connections>
+                        <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
@@ -703,15 +705,245 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="DistributedCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="462"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box title="Настройка модулей калькулятора" translatesAutoresizingMaskIntoConstraints="NO" id="Kpt-H7-QBg">
+                                <rect key="frame" x="7" y="358" width="466" height="94"/>
+                                <view key="contentView" id="3GX-Iz-lGD">
+                                    <rect key="frame" x="2" y="2" width="462" height="77"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EiG-F6-XgP">
+                                            <rect key="frame" x="328" y="38" width="130" height="33"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="LyT-sq-8Ai"/>
+                                                <constraint firstAttribute="width" constant="118" id="wfz-JD-Jf1"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Выбрать файл" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eOC-vR-aCo">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="selectAddressListButtonClickedWithSender:" target="XfG-lQ-9wD" id="Xhn-Rg-Q5w"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pWN-G0-vNW">
+                                            <rect key="frame" x="10" y="10" width="442" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="5aH-l9-U0D"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Порт" bezelStyle="round" id="M2F-LQ-s1E">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="666-ew-L6h">
+                                            <rect key="frame" x="10" y="42" width="314" height="25"/>
+                                            <pathCell key="cell" selectable="YES" editable="YES" refusesFirstResponder="YES" alignment="left" id="3do-QA-LIT">
+                                                <font key="font" metaFont="system"/>
+                                                <url key="url" string="file://localhost/Applications/"/>
+                                            </pathCell>
+                                        </pathControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="EiG-F6-XgP" secondAttribute="trailing" constant="10" id="AIw-mI-gCB"/>
+                                        <constraint firstItem="EiG-F6-XgP" firstAttribute="top" secondItem="3GX-Iz-lGD" secondAttribute="top" constant="10" id="Nhr-Ba-SZ2"/>
+                                        <constraint firstItem="pWN-G0-vNW" firstAttribute="leading" secondItem="3GX-Iz-lGD" secondAttribute="leading" constant="10" id="SBo-Eb-rHb"/>
+                                        <constraint firstItem="666-ew-L6h" firstAttribute="leading" secondItem="3GX-Iz-lGD" secondAttribute="leading" constant="10" id="Wh0-6p-BIW"/>
+                                        <constraint firstAttribute="trailing" secondItem="pWN-G0-vNW" secondAttribute="trailing" constant="10" id="Yph-nB-NXD"/>
+                                        <constraint firstItem="pWN-G0-vNW" firstAttribute="top" secondItem="666-ew-L6h" secondAttribute="bottom" constant="10" id="c5z-w3-ooD"/>
+                                        <constraint firstItem="EiG-F6-XgP" firstAttribute="leading" secondItem="666-ew-L6h" secondAttribute="trailing" constant="10" id="kqm-jr-dSx"/>
+                                        <constraint firstAttribute="bottom" secondItem="pWN-G0-vNW" secondAttribute="bottom" constant="10" id="nhm-jI-rUG"/>
+                                        <constraint firstItem="666-ew-L6h" firstAttribute="top" secondItem="3GX-Iz-lGD" secondAttribute="top" constant="10" id="rp9-zv-wU9"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="LhC-nz-fge"/>
+                                </constraints>
+                            </box>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZA-gE-iZf">
+                                <rect key="frame" x="10" y="10" width="460" height="142"/>
+                                <clipView key="contentView" id="p47-ap-I29">
+                                    <rect key="frame" x="1" y="1" width="458" height="140"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="u2w-RY-Qsa">
+                                            <rect key="frame" x="0.0" y="0.0" width="458" height="140"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="458" height="140"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="o2e-YA-bbW">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="971-E8-Edy">
+                                    <rect key="frame" x="443" y="1" width="16" height="140"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <box title="Запуск сервера" translatesAutoresizingMaskIntoConstraints="NO" id="FiH-e0-gVt">
+                                <rect key="frame" x="7" y="258" width="466" height="94"/>
+                                <view key="contentView" id="blG-ep-hIa">
+                                    <rect key="frame" x="2" y="2" width="462" height="77"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nm4-XM-jgP">
+                                            <rect key="frame" x="10" y="26" width="314" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="314" id="TmV-Gm-ThY"/>
+                                                <constraint firstAttribute="height" constant="22" id="o7e-9X-BmL"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="IP- адрес сервера" bezelStyle="round" id="eSB-3J-4Nm">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="97c-Su-Zzg">
+                                            <rect key="frame" x="328" y="35" width="130" height="33"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="WGY-Qm-7j8"/>
+                                                <constraint firstAttribute="width" constant="118" id="wnV-mf-9Ah"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Запустить" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="drI-jE-qnV">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="startServerButtonPressed:" target="XfG-lQ-9wD" id="7cQ-Z8-Z1d"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AHr-Hg-0Xw">
+                                            <rect key="frame" x="328" y="3" width="130" height="33"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Ui7-0u-ewA"/>
+                                                <constraint firstAttribute="height" constant="22" id="VQD-vk-OTe"/>
+                                                <constraint firstAttribute="width" constant="118" id="WxE-Y1-Shx"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="zUO-fx-2se"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Остановить" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JDi-cR-v8y">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="stopServerButtonClicked:" target="XfG-lQ-9wD" id="Eoe-pr-hAB"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="AHr-Hg-0Xw" firstAttribute="top" secondItem="97c-Su-Zzg" secondAttribute="bottom" constant="10" id="4SQ-dw-2E6"/>
+                                        <constraint firstItem="nm4-XM-jgP" firstAttribute="leading" secondItem="blG-ep-hIa" secondAttribute="leading" constant="10" id="7mx-YS-hwi"/>
+                                        <constraint firstItem="AHr-Hg-0Xw" firstAttribute="leading" secondItem="nm4-XM-jgP" secondAttribute="trailing" constant="10" id="Bzj-Hj-a5a"/>
+                                        <constraint firstItem="97c-Su-Zzg" firstAttribute="top" secondItem="blG-ep-hIa" secondAttribute="top" constant="10" id="D44-Ce-PxH"/>
+                                        <constraint firstAttribute="bottom" secondItem="AHr-Hg-0Xw" secondAttribute="bottom" constant="10" id="MbI-A8-iY8"/>
+                                        <constraint firstItem="nm4-XM-jgP" firstAttribute="centerY" secondItem="blG-ep-hIa" secondAttribute="centerY" id="Q7a-tv-jSp"/>
+                                        <constraint firstItem="97c-Su-Zzg" firstAttribute="leading" secondItem="nm4-XM-jgP" secondAttribute="trailing" constant="10" id="cRF-RB-iks"/>
+                                        <constraint firstAttribute="trailing" secondItem="AHr-Hg-0Xw" secondAttribute="trailing" constant="10" id="gUT-aK-Vcd"/>
+                                        <constraint firstAttribute="trailing" secondItem="AHr-Hg-0Xw" secondAttribute="trailing" constant="10" id="oEn-fk-nSH"/>
+                                        <constraint firstAttribute="bottom" secondItem="AHr-Hg-0Xw" secondAttribute="bottom" constant="10" id="sPJ-9R-2k6"/>
+                                        <constraint firstAttribute="trailing" secondItem="97c-Su-Zzg" secondAttribute="trailing" constant="10" id="sfr-qw-vmQ"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="Asy-ho-4Si"/>
+                                </constraints>
+                            </box>
+                            <box title="Конфигурирование списка операций" translatesAutoresizingMaskIntoConstraints="NO" id="lha-lC-upZ">
+                                <rect key="frame" x="7" y="158" width="466" height="94"/>
+                                <view key="contentView" id="hNj-0u-aW0">
+                                    <rect key="frame" x="2" y="2" width="462" height="77"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eCE-Hi-G4V">
+                                            <rect key="frame" x="328" y="38" width="130" height="33"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="118" id="AJS-p2-Ugs"/>
+                                                <constraint firstAttribute="height" constant="22" id="Xis-yD-2bg"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Выбрать файл" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kPO-Wb-4Gr">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="selectCalculationMapButtonClickedWithSender:" target="XfG-lQ-9wD" id="8cT-oE-i64"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="owZ-9W-Zp2">
+                                            <rect key="frame" x="4" y="6" width="454" height="33"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="u5X-o6-oD9"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Начать рассчет" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="moJ-oT-7qc">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="startCalculationButtonPressedWithSender:" target="XfG-lQ-9wD" id="hPl-gC-Xzz"/>
+                                            </connections>
+                                        </button>
+                                        <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nHa-H2-bLZ">
+                                            <rect key="frame" x="10" y="45" width="314" height="22"/>
+                                            <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="hj3-mj-g7v">
+                                                <font key="font" metaFont="system"/>
+                                                <url key="url" string="file://localhost/Applications/"/>
+                                            </pathCell>
+                                        </pathControl>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="owZ-9W-Zp2" firstAttribute="leading" secondItem="hNj-0u-aW0" secondAttribute="leading" constant="10" id="M6Q-Te-o0G"/>
+                                        <constraint firstItem="nHa-H2-bLZ" firstAttribute="top" secondItem="hNj-0u-aW0" secondAttribute="top" constant="10" id="OLQ-UL-PV0"/>
+                                        <constraint firstItem="owZ-9W-Zp2" firstAttribute="top" secondItem="eCE-Hi-G4V" secondAttribute="bottom" constant="10" id="Rg1-s4-bie"/>
+                                        <constraint firstItem="eCE-Hi-G4V" firstAttribute="leading" secondItem="nHa-H2-bLZ" secondAttribute="trailing" constant="10" id="fbV-cS-l11"/>
+                                        <constraint firstItem="eCE-Hi-G4V" firstAttribute="top" secondItem="hNj-0u-aW0" secondAttribute="top" constant="10" id="ir1-LS-ETm"/>
+                                        <constraint firstAttribute="trailing" secondItem="eCE-Hi-G4V" secondAttribute="trailing" constant="10" id="kWH-GY-viT"/>
+                                        <constraint firstAttribute="trailing" secondItem="owZ-9W-Zp2" secondAttribute="trailing" constant="10" id="mYf-mt-gOw"/>
+                                        <constraint firstItem="nHa-H2-bLZ" firstAttribute="leading" secondItem="hNj-0u-aW0" secondAttribute="leading" constant="10" id="t3d-xx-Qqp"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="Ei5-MG-Pch"/>
+                                </constraints>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="lha-lC-upZ" firstAttribute="top" secondItem="FiH-e0-gVt" secondAttribute="bottom" constant="10" id="5jB-gL-rM2"/>
+                            <constraint firstAttribute="bottom" secondItem="mZA-gE-iZf" secondAttribute="bottom" constant="10" id="69P-ac-pkh"/>
+                            <constraint firstAttribute="trailing" secondItem="lha-lC-upZ" secondAttribute="trailing" constant="10" id="6Ib-vH-3cW"/>
+                            <constraint firstAttribute="trailing" secondItem="mZA-gE-iZf" secondAttribute="trailing" constant="10" id="7UZ-dL-Bhs"/>
+                            <constraint firstAttribute="trailing" secondItem="FiH-e0-gVt" secondAttribute="trailing" constant="10" id="ADD-4q-H2s"/>
+                            <constraint firstItem="FiH-e0-gVt" firstAttribute="top" secondItem="Kpt-H7-QBg" secondAttribute="bottom" constant="10" id="Bp3-l5-eWH"/>
+                            <constraint firstItem="mZA-gE-iZf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="FDe-FP-wxP"/>
+                            <constraint firstItem="lha-lC-upZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="I1y-df-SvW"/>
+                            <constraint firstAttribute="trailing" secondItem="Kpt-H7-QBg" secondAttribute="trailing" constant="10" id="hBq-Xk-HwT"/>
+                            <constraint firstItem="FiH-e0-gVt" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="hny-zc-oLh"/>
+                            <constraint firstItem="Kpt-H7-QBg" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="i1U-ah-wut"/>
+                            <constraint firstItem="mZA-gE-iZf" firstAttribute="top" secondItem="lha-lC-upZ" secondAttribute="bottom" constant="10" id="vLR-4G-9k6"/>
+                            <constraint firstItem="Kpt-H7-QBg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="wsg-Ey-O0a"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calculationMapFilePathControl" destination="nHa-H2-bLZ" id="UxV-5W-kCf"/>
+                        <outlet property="listFilePathControl" destination="666-ew-L6h" id="sfR-ut-fZf"/>
+                        <outlet property="logTextView" destination="u2w-RY-Qsa" id="BXd-S0-ZLS"/>
+                        <outlet property="portNumberTextField" destination="pWN-G0-vNW" id="7sh-0L-Jyf"/>
+                        <outlet property="serverIPAddressTextField" destination="nm4-XM-jgP" id="3PN-s1-Xfl"/>
+                        <outlet property="startServerButton" destination="97c-Su-Zzg" id="8gt-hX-y2z"/>
+                        <outlet property="stopServerButton" destination="AHr-Hg-0Xw" id="Q2A-Xu-OjT"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="751"/>
         </scene>
     </scenes>
 </document>
