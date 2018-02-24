@@ -86,7 +86,6 @@
         }
     ]
 }
-
 ```
 ## Пример работы программы
 ![example](https://raw.githubusercontent.com/nataliii1245/DistributedCalculator/master/ScreenShot.png)
