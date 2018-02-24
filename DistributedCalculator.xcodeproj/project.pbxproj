@@ -14,6 +14,8 @@
 		E3722BC2204059A200179A6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3722BC0204059A200179A6C /* Main.storyboard */; };
 		E3722BCF2040B3D300179A6C /* CalculationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3722BCE2040B3D300179A6C /* CalculationMap.swift */; };
 		E3722BD12040B59100179A6C /* MathOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3722BD02040B59100179A6C /* MathOperation.swift */; };
+		E3F0160A2041846B00227470 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E3F016092041846B00227470 /* README.md */; };
+		E3F0160C20418BE400227470 /* ScreenShot.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F0160B20418BE400227470 /* ScreenShot.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		E3722BC4204059A200179A6C /* DistributedCalculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DistributedCalculator.entitlements; sourceTree = "<group>"; };
 		E3722BCE2040B3D300179A6C /* CalculationMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationMap.swift; sourceTree = "<group>"; };
 		E3722BD02040B59100179A6C /* MathOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathOperation.swift; sourceTree = "<group>"; };
+		E3F016092041846B00227470 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E3F0160B20418BE400227470 /* ScreenShot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenShot.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 		E3722BAE204059A200179A6C = {
 			isa = PBXGroup;
 			children = (
+				E3F0160B20418BE400227470 /* ScreenShot.png */,
+				E3F016092041846B00227470 /* README.md */,
 				E3722BB9204059A200179A6C /* DistributedCalculator */,
 				E3722BB8204059A200179A6C /* Products */,
 				EBEC4FC59B47A1AF3F2615FD /* Pods */,
@@ -155,8 +161,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3F0160A2041846B00227470 /* README.md in Resources */,
 				E3722BBF204059A200179A6C /* Assets.xcassets in Resources */,
 				E3722BC2204059A200179A6C /* Main.storyboard in Resources */,
+				E3F0160C20418BE400227470 /* ScreenShot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
